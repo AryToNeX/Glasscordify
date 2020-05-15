@@ -29,6 +29,7 @@
   "devDependencies": {},
   "dependencies": {
     "glasscordify-lib": "file:../lib",
-    "inquirer": "^7.1.0"
+    "inquirer": "^7.1.0",
+    "sudo-prompt": "^9.2.1"
   }
 }

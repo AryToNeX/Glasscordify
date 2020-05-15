@@ -68,34 +68,46 @@ var questions = [
 inquirer.prompt(questions).then(answers => {
 	if (answers.mode == "Install") install(answers.appPath);
 	else if (answers.mode == "Uninstall") uninstall(answers.appPath);
-	
 	else console.log("Uh oh, something went wrong! Please try again.");
 });
 
 
-function checkApp(appPath, answers){
-	app = lib.Installer.checkApp(appPath);
+async function checkApp(appPath, answers){
+	var executableFile = await lib.Utils.getAbsoluteExecutableFile(appPath);
+	if(typeof executableFile === "undefined"){
+		return "error", "Given file is not valid!";
+	}
+	
+	app = lib.Installer.checkApp(executableFile);
 	if (app.error) return app.error;
 	if (answers.mode == "Install" && app.isPatched) return "App is already patched!";
 	if (answers.mode == "Uninstall" && !app.isPatched) return "App is not patched!";
 	return true;
 }
 
-async function install(appPath){
+async function install(){
 	if (!lib.Utils.isGlasscordDownloaded()){
 		console.log("Downloading package...");
 		var result = await lib.Utils.downloadGlasscordAsar();
 		if (result){
-			console.log(ansi.green + "Download successful." + ansi.reset);
+			console.log("Download successful.");
 		} else {
 			console.log(ansi.red + "Download failed! " + ansi.reset + "Please check your internet connection and try again.");
-			return;
+			return false;
 		}
 	}
 	
-	console.log("To be continued...");
+	result = lib.Installer.install(app);
+	if(result.error) console.error(result.error);
+	
+	if(app.appPathType === "asar"){ // we worked in our temp dir!
+		lib.Utils.moveAsarToBackupFolder(app.resourcesPath);
+		lib.Utils.commitAsarExtraction(app.resourcesPath);
+	}
+	
+	console.log(ansi.green + "Install completed! " + ansi.reset + "Restart the app and install a compatible stylesheet to see Glasscord work.");
 }
 
-function uninstall(appName){
-	console.log(`Uninstalling Glasscord from ${appPath}...`);
+function uninstall(){
+	console.log(`Uninstalling Glasscord...`);
 }
