@@ -55,6 +55,7 @@
     },
     "linux": {
       "icon": "app/icon/icon.png",
+      "category": "Utility",
       "target": [
         {"target": "AppImage", "arch": ["x64"]},
         {"target": "tar.gz", "arch": ["x64"]}
