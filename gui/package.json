@@ -26,6 +26,9 @@
   ],
   "author": "Naomi Calabretta <me@arytonex.pw> (http://arytonex.pw)",
   "license": "Apache-2.0",
+  "funding": {
+    "url": "https://patreon.com/arytonex"
+  },
   "bugs": {
     "url": "https://github.com/AryToNeX/Glasscordify/issues"
   },
