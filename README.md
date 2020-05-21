@@ -1,6 +1,8 @@
-# THIS IS NOT FINISHED
+# Glasscordify, a Glasscord installer
 
-TODO:
+## THIS IS STILL NOT FINISHED
+
+TODOs:
 - [x] Write basic utility code to handle injection
 - [x] Write routines to patch applications
 - [x] Write a thing that will allow us to blacklist certain applications
