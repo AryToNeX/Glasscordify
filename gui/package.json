@@ -1,6 +1,6 @@
 {
   "name": "glasscordify",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Make your installed Electron app look sexy with Glasscord!",
   "main": "app/index.js",
   "scripts": {
@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "glasscordify-lib": "file:../lib",
-    "glasstron": "github:AryToNeX/Glasstron"
+    "glasstron": "0.0.3"
   },
   "build": {
     "appId": "pw.arytonex.glasscordify",
@@ -46,7 +46,14 @@
     },
     "win": {
       "icon": "app/icon/icon.ico",
-      "target": [{"target": "zip", "arch": ["x64"]}],
+      "target": [
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
       "requestedExecutionLevel": "requireAdministrator"
     },
     "mac": {
@@ -57,8 +64,18 @@
       "icon": "app/icon/icon.png",
       "category": "Utility",
       "target": [
-        {"target": "AppImage", "arch": ["x64"]},
-        {"target": "tar.gz", "arch": ["x64"]}
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "tar.gz",
+          "arch": [
+            "x64"
+          ]
+        }
       ]
     }
   }
