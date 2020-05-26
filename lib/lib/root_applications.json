@@ -1,16 +1,1 @@
-{
-  "Code": [
-    "Code - OSS",
-    "Code - Insiders",
-    "VSCodium"
-  ],
-  "discord": [
-    "Discord",
-    "DiscordPTB",
-    "DiscordCanary",
-    "discordptb",
-    "discordcanary",
-    "betterdiscord",
-    "powercord"
-  ]
-} 
+../../Glasscord/src/resources/root_applications.json
