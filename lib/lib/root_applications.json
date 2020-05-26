@@ -1,3 +1,16 @@
 {
-  "Code": ["Code - OSS", "Code - Insiders", "VSCodium"]
+  "Code": [
+    "Code - OSS",
+    "Code - Insiders",
+    "VSCodium"
+  ],
+  "discord": [
+    "Discord",
+    "DiscordPTB",
+    "DiscordCanary",
+    "discordptb",
+    "discordcanary",
+    "betterdiscord",
+    "powercord"
+  ]
 } 
