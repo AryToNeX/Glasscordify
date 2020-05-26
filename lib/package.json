@@ -33,6 +33,7 @@
     "asar": "^3.0.3",
     "fs-extra": "^9.0.0",
     "glob": "^7.1.6",
+    "json5": "^2.1.3",
     "prompt-sync": "^4.2.0",
     "windows-shortcuts-ps": "github:cbartondock/windows-shortcuts-ps"
   },
