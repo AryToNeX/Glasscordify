@@ -1,0 +1,15 @@
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/cli/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/gui/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/lib/"
+    schedule:
+      interval: "daily"
