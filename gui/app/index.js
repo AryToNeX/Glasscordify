@@ -15,13 +15,13 @@
 */
 "use strict";
 
-const glasstron = require('glasstron');
-glasstron.init(); // THIS should be called before we require the BrowserWindow class
-
 const electron = require("electron");
+const glasstron = require("glasstron");
 const exec = require("child_process").execSync;
 const path = require("path");
 const lib = require("./lib_interface.js");
+
+electron.app.commandLine.appendSwitch("enable-transparent-visuals");
 
 // Check if an instance is already running
 if (!electron.app.requestSingleInstanceLock()){
@@ -32,11 +32,11 @@ var win;
 
 electron.app.allowRendererProcessReuse = true;
 
-electron.app.on("ready", (e) => createWindow());
+electron.app.on("ready", (e) => setTimeout(createWindow, process.platform === "linux" ? 1000 : 0));
 
 electron.app.on('activate', () => {
 	if(electron.BrowserWindow.getAllWindows().length === 0)
-		createWindow();
+		setTimeout(createWindow, process.platform === "linux" ? 1000 : 0);
 	else
 		electron.BrowserWindow.getAllWindows()[0].show();
 });
@@ -51,7 +51,7 @@ electron.app.on('second-instance', (e, commandLine, workingDirectory) => {
 });
 
 function createWindow(){
-	win = new electron.BrowserWindow({
+	win = new glasstron.BrowserWindow({
 		width: 1280,
 		height: 720,
 		center: true,
@@ -63,6 +63,9 @@ function createWindow(){
 		show: true,
 		backgroundColor: "#A0FFFFFF",
 		icon: getIcon(),
+		blurType: "blurbehind",
+		vibrancy: "fullscreen-ui",
+		blur: true,
 		webPreferences: {
 			enableRemoteModule: false,
 			nodeIntegration: true
@@ -77,12 +80,6 @@ function createWindow(){
 	win.webContents.on('will-navigate', function(e, url){
 		e.preventDefault();
 		openExternal(url);
-	});
-	
-	glasstron.update(win, {
-		windows: {blurType: 'blurbehind'},
-		linux: {requestBlur: true},
-		macos: {vibrancy: 'fullscreen-ui'}
 	});
 
 	// events
