@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "glasscordify-lib": "file:../lib",
-    "glasstron": "0.0.4"
+    "glasstron": "0.0.5"
   },
   "build": {
     "appId": "pw.arytonex.glasscordify",
