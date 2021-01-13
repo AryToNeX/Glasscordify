@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/AryToNeX/Glasscordify#readme",
   "devDependencies": {
-    "electron": "^10.0.0",
+    "electron": "^11.2.0",
     "electron-builder": "^22.6.0"
   },
   "dependencies": {
